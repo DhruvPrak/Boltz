@@ -1,53 +1,40 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #0f172a;
-    color: #e5e7eb;
-    margin: 0;
+  font-family: Arial, sans-serif;
 }
 
-.header {
-    text-align: center;
-    padding: 25px;
-    background-color: #020617;
+#stackContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column-reverse;
+  width: 120px;
 }
 
-.section {
-    padding: 25px;
-    max-width: 900px;
-    margin: auto;
+/* Base stack box */
+.stack-box {
+  border: 2px solid #38bdf8;
+  padding: 12px;
+  margin: 4px 0;
+  text-align: center;
+  font-weight: bold;
+  background-color: #020617;
+  color: white;
+
+  /* animation */
+  opacity: 0;
+  transform: translateY(15px);
+  animation: pushIn 0.3s ease forwards;
 }
 
-.section h2 {
-    color: #38bdf8;
+/* Highlight TOP */
+.stack-box.top {
+  border-color: #facc15;
+  background-color: #1e293b;
 }
 
-.code-block {
-    background-color: #020617;
-    padding: 15px;
-    margin-top: 10px;
-    white-space: pre;
-}
-
-.visual-area,
-.practice-area {
-    margin-top: 15px;
-    padding: 15px;
-    background-color: #020617;
-}
-
-.explanation-box {
-    margin-top: 10px;
-    padding: 10px;
-    border-left: 4px solid #38bdf8;
-}
-
-.controls button {
-    margin: 5px;
-    padding: 10px 15px;
-}
-
-.footer {
-    text-align: center;
-    padding: 15px;
-    background-color: #020617;
+/* Push animation */
+@keyframes pushIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

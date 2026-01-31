@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Stack</title>
+  <title>Stack</title>
+  <link rel="stylesheet" href="../css/stack.css">
 </head>
 <body>
-    <h1>Stack Page (Coming Soon)</h1>
-    <a href="../index.html">← Back to Dashboard</a>
+
+  <h1>Stack</h1>
+
+  <input type="number" id="stackInput" placeholder="Enter value">
+
+  <button id="pushBtn">Push</button>
+  <button id="popBtn">Pop</button>
+  <button id="peekBtn">Peek</button>
+
+  <p id="peekOutput">Top value will appear here</p>
+  <p id="stackExplanation">
+  Perform an operation to see what happens in the stack.
+</p>
+
+  <div id="stackContainer"></div>
+
+  <p id="stackStatus">Status: In Progress</p>
+
+
+  <!-- JS MUST be at the bottom -->
+  <script src="../js/stack.js"></script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+#arrayContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.array-box {
+  padding: 15px 20px;
+  border: 2px solid #38bdf8;
+  color: white;
+  font-weight: bold;
+}
