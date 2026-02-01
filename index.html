@@ -8,64 +8,136 @@
 </head>
 <body>
 
-    <div class="app">
-        
-        <!-- ========== SIDEBAR ========== -->
-        <aside class="sidebar">
-            <h2 class="logo">DSA⚡</h2>
+<div class="app">
+    
+    <!-- ========== SIDEBAR ========== -->
+    <aside class="sidebar">
+        <h2 class="logo">DSA⚡</h2>
 
-            <nav>
-                <ul>
-                    <li class="active" id="nav-dashboard">Dashboard</li>
-                    <li id="nav-arrays">Arrays</li>
-                    <li id="nav-stack">Stack</li>
-                    <li id="nav-queue">Queue</li>
-                    <li id="nav-linkedlist">Linked List</li>
-                    <li id="nav-trees">Trees</li>
-                    <li id="nav-graphs">Graphs</li>
-                </ul>
-            </nav>
+        <nav>
+            <ul class="sidebar-menu">
 
-        </aside>
+                <li class="menu-item active" id="nav-dashboard">
+                    Dashboard
+                </li>
 
-        <!-- ========== MAIN CONTENT ========== -->
-        <main class="main">
+                <li class="menu-item" id="nav-arrays">
+                    Arrays
+                </li>
 
-            <!-- Header -->
-            <header class="top-bar">
-                <h1>Welcome, Learner 👋</h1>
-            </header>
+                <li class="menu-item" id="nav-stack">
+                    Stack
+                </li>
 
-            <!-- Dashboard Cards -->
-            <section class="dashboard">
+                <!-- ===== QUEUE WITH DROPDOWN ===== -->
+                <li class="menu-item has-children">
+                    <div class="menu-header">
+                        <span>Queue</span>
+                        <span class="arrow">▾</span>
+                    </div>
+                    <ul class="submenu">
+                        <li class="submenu-item" data-link="pages/queue.html">
+                            Simple Queue
+                        </li>
+                        <li class="submenu-item" data-link="pages/circular-queue.html">
+                            Circular Queue
+                        </li>
+                    </ul>
+                </li>
 
-                <div class="card">
-                    <h3>🔥 Streak</h3>
-                    <p>3 Days</p>
-                </div>
+                <!-- ===== LINKED LIST WITH DROPDOWN ===== -->
+                <li class="menu-item has-children">
+                    <div class="menu-header">
+                        <span>Linked List</span>
+                        <span class="arrow">▾</span>
+                    </div>
 
-                <div class="card">
-                    <h3>⚡ Boltz</h3>
-                    <p>120</p>
-                </div>
+                    <ul class="submenu">
 
-                <div class="card">
-                    <h3>📘 Topics Completed</h3>
-                    <p>2 / 10</p>
-                </div>
+                        <li class="submenu-group">
+                            Singly Linked List
+                            <ul>
+                                <li class="submenu-item">Traversing</li>
+                                <li class="submenu-item">Insert Node</li>
+                                <li class="submenu-item">Delete Node</li>
+                                <li class="submenu-item">Reverse</li>
+                            </ul>
+                        </li>
 
-            </section>
+                        <li class="submenu-group">
+                            Doubly Linked List
+                            <ul>
+                                <li class="submenu-item">Traversing</li>
+                                <li class="submenu-item">Insert Node</li>
+                                <li class="submenu-item">Delete Node</li>
+                                <li class="submenu-item">Reverse</li>
+                            </ul>
+                        </li>
 
-            <!-- Progress Section -->
-            <section class="progress">
-                <h2>Your Learning Progress</h2>
-                <p>Keep learning daily to maintain your streak!</p>
-            </section>
+                        <li class="submenu-group">
+                            Circular Linked List
+                            <ul>
+                                <li class="submenu-item">Traversing</li>
+                                <li class="submenu-item">Insert Node</li>
+                                <li class="submenu-item">Delete Node</li>
+                                <li class="submenu-item">Reverse</li>
+                            </ul>
+                        </li>
 
-        </main>
+                    </ul>
+                </li>
 
-    </div>
+                <li class="menu-item" id="nav-trees">
+                    Trees
+                </li>
 
-    <script src="js/home.js"></script>
+                <li class="menu-item" id="nav-graphs">
+                    Graphs
+                </li>
+
+            </ul>
+        </nav>
+
+    </aside>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="main">
+
+        <!-- Header -->
+        <header class="top-bar">
+            <h1>Welcome, Learner 👋</h1>
+        </header>
+
+        <!-- Dashboard Cards -->
+        <section class="dashboard">
+
+            <div class="card">
+                <h3>🔥 Streak</h3>
+                <p>3 Days</p>
+            </div>
+
+            <div class="card">
+                <h3>⚡ Boltz</h3>
+                <p>120</p>
+            </div>
+
+            <div class="card">
+                <h3>📘 Topics Completed</h3>
+                <p>2 / 10</p>
+            </div>
+
+        </section>
+
+        <!-- Progress Section -->
+        <section class="progress">
+            <h2>Your Learning Progress</h2>
+            <p>Keep learning daily to maintain your streak!</p>
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/home.js"></script>
 </body>
 </html>

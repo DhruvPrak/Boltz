@@ -1,27 +1,75 @@
-document.getElementById("nav-dashboard").onclick = () => {
-    window.location.href = "/index.html";
-};
+/* ===============================
+   MAIN SIDEBAR NAVIGATION (TOP LEVEL)
+================================ */
 
-document.getElementById("nav-arrays").onclick = () => {
-    window.location.href = "/pages/array.html";
-};
+// Dashboard
+document.getElementById("nav-dashboard")?.addEventListener("click", () => {
+  window.location.href = "/index.html";
+});
 
-document.getElementById("nav-stack").onclick = () => {
-    window.location.href = "/pages/stack.html";
-};
+// Arrays
+document.getElementById("nav-arrays")?.addEventListener("click", () => {
+  window.location.href = "/pages/array.html";
+});
 
-document.getElementById("nav-queue").onclick = () => {
-    alert("Queue page coming soon 🚧");
-};
+// Stack
+document.getElementById("nav-stack")?.addEventListener("click", () => {
+  window.location.href = "/pages/stack.html";
+});
 
-document.getElementById("nav-linkedlist").onclick = () => {
-    alert("Linked List page coming soon 🚧");
-};
+// Trees (coming soon)
+document.getElementById("nav-trees")?.addEventListener("click", () => {
+  alert("Trees page coming soon 🚧");
+});
 
-document.getElementById("nav-trees").onclick = () => {
-    alert("Trees page coming soon 🚧");
-};
+// Graphs (coming soon)
+document.getElementById("nav-graphs")?.addEventListener("click", () => {
+  alert("Graphs page coming soon 🚧");
+});
 
-document.getElementById("nav-graphs").onclick = () => {
-    alert("Graphs page coming soon 🚧");
-};
+
+/* ===============================
+   ACCORDION TOGGLE (QUEUE, LINKED LIST)
+================================ */
+
+document.querySelectorAll(".menu-header").forEach(header => {
+  header.addEventListener("click", () => {
+    const parent = header.parentElement;
+    parent.classList.toggle("open");
+
+    const submenu = parent.querySelector(".submenu");
+    if (!submenu) return;
+
+    submenu.style.display =
+      submenu.style.display === "block" ? "none" : "block";
+  });
+});
+
+
+/* ===============================
+   SUBMENU PAGE NAVIGATION
+================================ */
+
+document.querySelectorAll(".submenu-item").forEach(item => {
+  item.addEventListener("click", (e) => {
+    e.stopPropagation(); // prevent accordion toggle
+
+    const link = item.getAttribute("data-link");
+    if (link) {
+      window.location.href = "/" + link;
+    }
+  });
+});
+
+
+/* ===============================
+   LINKED LIST SUBITEM PLACEHOLDERS
+================================ */
+
+document.querySelectorAll(".submenu-group .submenu-item").forEach(item => {
+  item.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    alert("This Linked List operation page will be added soon 🚧");
+  });
+});
