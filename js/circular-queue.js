@@ -1,77 +1,102 @@
-console.log("circularQueue.js loaded");
+console.log("Circular Queue loaded");
 
-let size = 5;
-let queue = new Array(size);
+/* =========================
+   CONFIGURATION
+========================= */
+const SIZE = 5;                 // Fixed size (important for circular queue)
+let queue = new Array(SIZE);    // Fixed-size array
 let front = -1;
 let rear = -1;
 
-let container = document.getElementById("queueContainer");
-let input = document.getElementById("queueInput");
-let enqueueBtn = document.getElementById("enqueueBtn");
-let dequeueBtn = document.getElementById("dequeueBtn");
-let peekBtn = document.getElementById("peekBtn");
-let peekOutput = document.getElementById("peekOutput");
+/* =========================
+   DOM ELEMENTS
+========================= */
+const container = document.getElementById("queueContainer");
+const input = document.getElementById("queueInput");
+const enqueueBtn = document.getElementById("enqueueBtn");
+const dequeueBtn = document.getElementById("dequeueBtn");
+const peekBtn = document.getElementById("peekBtn");
+const peekOutput = document.getElementById("peekOutput");
 
-/* =====================
-   CIRCULAR QUEUE LOGIC
-===================== */
+/* =========================
+   HELPER FUNCTIONS
+========================= */
 
-function isFull() {
-  return (front === 0 && rear === size - 1) ||
-         (rear + 1) % size === front;
-}
-
+// Queue is empty when front is -1
 function isEmpty() {
   return front === -1;
 }
 
-function enqueue(value) {
-  if (isFull()) return false;
+// Queue is full when next rear hits front
+function isFull() {
+  return (rear + 1) % SIZE === front;
+}
 
-  if (front === -1) {
+/* =========================
+   QUEUE OPERATIONS
+========================= */
+
+// ENQUEUE (add at rear)
+function enqueue(value) {
+  if (isFull()) {
+    return false; // cannot add
+  }
+
+  // First element
+  if (isEmpty()) {
     front = 0;
     rear = 0;
   } else {
-    rear = (rear + 1) % size;
+    rear = (rear + 1) % SIZE; // circular move
   }
 
   queue[rear] = value;
   return true;
 }
 
+// DEQUEUE (remove from front)
 function dequeue() {
-  if (isEmpty()) return null;
+  if (isEmpty()) {
+    return null;
+  }
 
-  let removed = queue[front];
+  const removedValue = queue[front];
   queue[front] = undefined;
 
+  // If only one element existed
   if (front === rear) {
     front = -1;
     rear = -1;
   } else {
-    front = (front + 1) % size;
+    front = (front + 1) % SIZE; // circular move
   }
 
-  return removed;
+  return removedValue;
 }
 
+// PEEK (view front)
 function peek() {
-  if (isEmpty()) return null;
+  if (isEmpty()) {
+    return null;
+  }
   return queue[front];
 }
 
-/* =====================
-   DRAW QUEUE
-===================== */
+/* =========================
+   UI RENDERING
+========================= */
 
 function drawQueue() {
   container.innerHTML = "";
 
-  if (isEmpty()) return;
+  if (isEmpty()) {
+    return;
+  }
 
   let i = front;
+
   while (true) {
-    let box = document.createElement("div");
+    const box = document.createElement("div");
     box.className = "queue-box";
     box.innerText = queue[i];
 
@@ -81,23 +106,26 @@ function drawQueue() {
     container.appendChild(box);
 
     if (i === rear) break;
-    i = (i + 1) % size;
+    i = (i + 1) % SIZE;
   }
 }
 
-/* =====================
+/* =========================
    BUTTON EVENTS
-===================== */
+========================= */
 
-enqueueBtn.onclick = function () {
-  let value = input.value;
+enqueueBtn.onclick = () => {
+  const value = input.value;
+
   if (value === "") {
     alert("Enter a value");
     return;
   }
 
-  if (!enqueue(Number(value))) {
-    alert("Queue is full");
+  const success = enqueue(Number(value));
+
+  if (!success) {
+    alert("Queue is full — but this would NOT happen in simple queue reuse!");
     return;
   }
 
@@ -105,8 +133,10 @@ enqueueBtn.onclick = function () {
   drawQueue();
 };
 
-dequeueBtn.onclick = function () {
-  if (dequeue() === null) {
+dequeueBtn.onclick = () => {
+  const removed = dequeue();
+
+  if (removed === null) {
     alert("Queue is empty");
     return;
   }
@@ -114,8 +144,8 @@ dequeueBtn.onclick = function () {
   drawQueue();
 };
 
-peekBtn.onclick = function () {
-  let value = peek();
+peekBtn.onclick = () => {
+  const value = peek();
   peekOutput.innerText =
     value === null ? "Queue is empty" : "Front value: " + value;
 };
