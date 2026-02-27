@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>DSA Learning Dashboard</title>
-
     <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
@@ -29,7 +28,7 @@
                     Stack
                 </li>
 
-                <!-- ===== QUEUE WITH DROPDOWN ===== -->
+                <!-- ===== QUEUE ===== -->
                 <li class="menu-item has-children">
                     <div class="menu-header">
                         <span>Queue</span>
@@ -45,45 +44,22 @@
                     </ul>
                 </li>
 
-                <!-- ===== LINKED LIST WITH DROPDOWN ===== -->
+                <!-- ===== LINKED LIST ===== -->
                 <li class="menu-item has-children">
                     <div class="menu-header">
                         <span>Linked List</span>
                         <span class="arrow">▾</span>
                     </div>
-
                     <ul class="submenu">
-
-                        <li class="submenu-group">
+                        <li class="submenu-item" data-link="pages/singly-linked-list.html">
                             Singly Linked List
-                            <ul>
-                                <li class="submenu-item">Traversing</li>
-                                <li class="submenu-item">Insert Node</li>
-                                <li class="submenu-item">Delete Node</li>
-                                <li class="submenu-item">Reverse</li>
-                            </ul>
                         </li>
-
-                        <li class="submenu-group">
+                        <li class="submenu-item" data-link="pages/doubly-linked-list.html">
                             Doubly Linked List
-                            <ul>
-                                <li class="submenu-item">Traversing</li>
-                                <li class="submenu-item">Insert Node</li>
-                                <li class="submenu-item">Delete Node</li>
-                                <li class="submenu-item">Reverse</li>
-                            </ul>
                         </li>
-
-                        <li class="submenu-group">
+                        <li class="submenu-item" data-link="pages/circular-linked-list.html">
                             Circular Linked List
-                            <ul>
-                                <li class="submenu-item">Traversing</li>
-                                <li class="submenu-item">Insert Node</li>
-                                <li class="submenu-item">Delete Node</li>
-                                <li class="submenu-item">Reverse</li>
-                            </ul>
                         </li>
-
                     </ul>
                 </li>
 
@@ -103,14 +79,11 @@
     <!-- ========== MAIN CONTENT ========== -->
     <main class="main">
 
-        <!-- Header -->
         <header class="top-bar">
             <h1>Welcome, Learner 👋</h1>
         </header>
 
-        <!-- Dashboard Cards -->
         <section class="dashboard">
-
             <div class="card">
                 <h3>🔥 Streak</h3>
                 <p>3 Days</p>
@@ -125,10 +98,8 @@
                 <h3>📘 Topics Completed</h3>
                 <p>2 / 10</p>
             </div>
-
         </section>
 
-        <!-- Progress Section -->
         <section class="progress">
             <h2>Your Learning Progress</h2>
             <p>Keep learning daily to maintain your streak!</p>
