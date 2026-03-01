@@ -191,4 +191,85 @@ _searchRecursive(node, value) {
         return this._searchRecursive(node.right, value);
     }
 }
+// ===============================
+// AVL DELETE
+// ===============================
+delete(value) {
+    this.root = this._deleteRecursive(this.root, value);
+}
+
+_deleteRecursive(node, value) {
+
+    // 1️⃣ Normal BST Delete
+    if (node === null) return null;
+
+    if (value < node.value) {
+        node.left = this._deleteRecursive(node.left, value);
+    } 
+    else if (value > node.value) {
+        node.right = this._deleteRecursive(node.right, value);
+    } 
+    else {
+        // Node found
+
+        // Case 1: No child
+        if (node.left === null && node.right === null) {
+            return null;
+        }
+
+        // Case 2: One child
+        if (node.left === null) return node.right;
+        if (node.right === null) return node.left;
+
+        // Case 3: Two children
+        let successor = this._findMin(node.right);
+        node.value = successor.value;
+        node.right = this._deleteRecursive(node.right, successor.value);
+    }
+
+    // 2️⃣ Update height
+    node.height = 1 + Math.max(
+        this._getHeight(node.left),
+        this._getHeight(node.right)
+    );
+
+    // 3️⃣ Get balance factor
+    const balance = this._getBalance(node);
+
+    // ===============================
+    // 4️⃣ Handle Imbalance Cases
+    // ===============================
+
+    // LL Case
+    if (balance > 1 && this._getBalance(node.left) >= 0) {
+        return this._rightRotate(node);
+    }
+
+    // LR Case
+    if (balance > 1 && this._getBalance(node.left) < 0) {
+        node.left = this._leftRotate(node.left);
+        return this._rightRotate(node);
+    }
+
+    // RR Case
+    if (balance < -1 && this._getBalance(node.right) <= 0) {
+        return this._leftRotate(node);
+    }
+
+    // RL Case
+    if (balance < -1 && this._getBalance(node.right) > 0) {
+        node.right = this._rightRotate(node.right);
+        return this._leftRotate(node);
+    }
+
+    return node;
+}
+
+// Helper to find minimum node
+_findMin(node) {
+    while (node.left !== null) {
+        node = node.left;
+    }
+    return node;
+}
 }
