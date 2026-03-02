@@ -143,4 +143,79 @@ hasCycle() {
 
     return false;
 }
+// =======================================
+// Shortest Path (Unweighted Graph - BFS)
+// =======================================
+
+shortestPath(start, end) {
+
+    const visited = {};
+    const queue = [];
+    const previous = {};
+
+    queue.push(start);
+    visited[start] = true;
+    previous[start] = null;
+
+    while (queue.length) {
+
+        const vertex = queue.shift();
+
+        if (vertex === end) break;
+
+        for (let neighbor of this.adjList[vertex]) {
+
+            if (!visited[neighbor]) {
+                visited[neighbor] = true;
+                previous[neighbor] = vertex;
+                queue.push(neighbor);
+            }
+        }
+    }
+
+    // Reconstruct path
+    const path = [];
+    let current = end;
+
+    while (current !== null) {
+        path.push(current);
+        current = previous[current];
+    }
+
+    path.reverse();
+
+    // If start not connected to end
+    if (path[0] !== start) return null;
+
+    return path;
+}
+}
+// =======================================
+// Weighted Graph (Adjacency List)
+// =======================================
+
+class WeightedGraph {
+
+    constructor() {
+        this.adjList = {};
+    }
+
+    addVertex(vertex) {
+        if (!this.adjList[vertex]) {
+            this.adjList[vertex] = [];
+        }
+    }
+
+    addEdge(v1, v2, weight) {
+
+        if (!this.adjList[v1]) this.addVertex(v1);
+        if (!this.adjList[v2]) this.addVertex(v2);
+
+        this.adjList[v1].push({ node: v2, weight });
+        this.adjList[v2].push({ node: v1, weight });
+    }
+
+    print() {
+        console.log(this.adjList);
+    }
 }
