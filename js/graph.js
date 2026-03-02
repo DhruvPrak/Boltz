@@ -28,6 +28,8 @@ class Graph {
     // Remove edge
     removeEdge(v1, v2) {
 
+        if (!this.adjList[v1] || !this.adjList[v2]) return;
+
         this.adjList[v1] =
             this.adjList[v1].filter(v => v !== v2);
 
@@ -37,6 +39,8 @@ class Graph {
 
     // Remove vertex
     removeVertex(vertex) {
+
+        if (!this.adjList[vertex]) return;
 
         while (this.adjList[vertex].length) {
             const adjacent = this.adjList[vertex].pop();
@@ -49,147 +53,155 @@ class Graph {
     print() {
         console.log(this.adjList);
     }
+
     // =======================================
-// Breadth First Search (BFS)
-// =======================================
+    // BFS
+    // =======================================
 
-bfs(start) {
+    bfs(start) {
 
-    const visited = {};
-    const queue = [];
-    const result = [];
+        if (!this.adjList[start]) return null;
 
-    queue.push(start);
-    visited[start] = true;
+        const visited = {};
+        const queue = [];
+        const result = [];
 
-    while (queue.length) {
+        queue.push(start);
+        visited[start] = true;
 
-        const vertex = queue.shift();
-        result.push(vertex);
+        while (queue.length) {
 
-        for (let neighbor of this.adjList[vertex]) {
+            const vertex = queue.shift();
+            result.push(vertex);
 
-            if (!visited[neighbor]) {
-                visited[neighbor] = true;
-                queue.push(neighbor);
+            for (let neighbor of this.adjList[vertex]) {
+
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.push(neighbor);
+                }
             }
         }
+
+        return result;
     }
 
-    return result;
-}
-// =======================================
-// Depth First Search (DFS - Recursive)
-// =======================================
+    // =======================================
+    // DFS (Recursive)
+    // =======================================
 
-dfs(start) {
+    dfs(start) {
 
-    const visited = {};
-    const result = [];
+        if (!this.adjList[start]) return null;
 
-    const dfsHelper = (vertex) => {
+        const visited = {};
+        const result = [];
 
-        if (!vertex) return;
+        const dfsHelper = (vertex) => {
 
-        visited[vertex] = true;
-        result.push(vertex);
+            visited[vertex] = true;
+            result.push(vertex);
 
-        for (let neighbor of this.adjList[vertex]) {
-            if (!visited[neighbor]) {
-                dfsHelper(neighbor);
+            for (let neighbor of this.adjList[vertex]) {
+                if (!visited[neighbor]) {
+                    dfsHelper(neighbor);
+                }
             }
-        }
-    };
+        };
 
-    dfsHelper(start);
+        dfsHelper(start);
 
-    return result;
-}
-// =======================================
-// Cycle Detection (Undirected Graph)
-// =======================================
+        return result;
+    }
 
-hasCycle() {
+    // =======================================
+    // Cycle Detection (Undirected)
+    // =======================================
 
-    const visited = {};
+    hasCycle() {
 
-    const dfsCycle = (vertex, parent) => {
+        const visited = {};
 
-        visited[vertex] = true;
+        const dfsCycle = (vertex, parent) => {
 
-        for (let neighbor of this.adjList[vertex]) {
+            visited[vertex] = true;
 
-            if (!visited[neighbor]) {
-                if (dfsCycle(neighbor, vertex)) {
+            for (let neighbor of this.adjList[vertex]) {
+
+                if (!visited[neighbor]) {
+                    if (dfsCycle(neighbor, vertex)) {
+                        return true;
+                    }
+                }
+                else if (neighbor !== parent) {
                     return true;
                 }
             }
-            else if (neighbor !== parent) {
-                return true;
+
+            return false;
+        };
+
+        for (let vertex in this.adjList) {
+
+            if (!visited[vertex]) {
+                if (dfsCycle(vertex, null)) {
+                    return true;
+                }
             }
         }
 
         return false;
-    };
+    }
 
-    for (let vertex in this.adjList) {
+    // =======================================
+    // Shortest Path (Unweighted - BFS)
+    // =======================================
 
-        if (!visited[vertex]) {
-            if (dfsCycle(vertex, null)) {
-                return true;
+    shortestPath(start, end) {
+
+        if (!this.adjList[start] || !this.adjList[end]) return null;
+
+        const visited = {};
+        const queue = [];
+        const previous = {};
+
+        queue.push(start);
+        visited[start] = true;
+        previous[start] = null;
+
+        while (queue.length) {
+
+            const vertex = queue.shift();
+
+            if (vertex === end) break;
+
+            for (let neighbor of this.adjList[vertex]) {
+
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    previous[neighbor] = vertex;
+                    queue.push(neighbor);
+                }
             }
         }
-    }
 
-    return false;
-}
-// =======================================
-// Shortest Path (Unweighted Graph - BFS)
-// =======================================
+        const path = [];
+        let current = end;
 
-shortestPath(start, end) {
-
-    const visited = {};
-    const queue = [];
-    const previous = {};
-
-    queue.push(start);
-    visited[start] = true;
-    previous[start] = null;
-
-    while (queue.length) {
-
-        const vertex = queue.shift();
-
-        if (vertex === end) break;
-
-        for (let neighbor of this.adjList[vertex]) {
-
-            if (!visited[neighbor]) {
-                visited[neighbor] = true;
-                previous[neighbor] = vertex;
-                queue.push(neighbor);
-            }
+        while (current !== null) {
+            path.push(current);
+            current = previous[current];
         }
+
+        path.reverse();
+
+        if (path[0] !== start) return null;
+
+        return path;
     }
-
-    // Reconstruct path
-    const path = [];
-    let current = end;
-
-    while (current !== null) {
-        path.push(current);
-        current = previous[current];
-    }
-
-    path.reverse();
-
-    // If start not connected to end
-    if (path[0] !== start) return null;
-
-    return path;
 }
-}
+
+
 // =======================================
 // Weighted Graph (Adjacency List)
 // =======================================
@@ -217,5 +229,74 @@ class WeightedGraph {
 
     print() {
         console.log(this.adjList);
+    }
+
+    // =======================================
+    // Dijkstra's Algorithm
+    // =======================================
+
+    dijkstra(start) {
+
+        const distances = {};
+        const previous = {};
+        const pq = new MinHeap();
+
+        for (let vertex in this.adjList) {
+            distances[vertex] = Infinity;
+            previous[vertex] = null;
+        }
+
+        distances[start] = 0;
+        pq.insert({ node: start, distance: 0 });
+
+        while (pq.heap.length > 0) {
+
+            const smallest = pq.extractMin();
+            const currentNode = smallest.node;
+
+            for (let neighbor of this.adjList[currentNode]) {
+
+                let candidate = distances[currentNode] + neighbor.weight;
+
+                if (candidate < distances[neighbor.node]) {
+
+                    distances[neighbor.node] = candidate;
+                    previous[neighbor.node] = currentNode;
+
+                    pq.insert({
+                        node: neighbor.node,
+                        distance: candidate
+                    });
+                }
+            }
+        }
+
+        return { distances, previous };
+    }
+
+    // =======================================
+    // Get Shortest Path
+    // =======================================
+
+    getShortestPath(start, end) {
+
+        const { distances, previous } = this.dijkstra(start);
+
+        if (distances[end] === Infinity) return null;
+
+        const path = [];
+        let current = end;
+
+        while (current !== null) {
+            path.push(current);
+            current = previous[current];
+        }
+
+        path.reverse();
+
+        return {
+            distance: distances[end],
+            path: path
+        };
     }
 }
