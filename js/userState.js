@@ -63,7 +63,7 @@ function loadUserState() {
 let userState = loadUserState();
 
 // ------------------------------
-// Boltz Reward Configuration
+// Reward Configuration
 // ------------------------------
 
 const moduleRewards = {
@@ -82,16 +82,83 @@ const moduleRewards = {
 };
 
 // ------------------------------
+// Unlock Configuration
+// ------------------------------
+
+const unlockMap = {
+    arrays: "stack",
+    stack: "queue",
+    queue: "linkedList",
+    linkedList: "trees",
+    trees: "heap",
+    heap: "hashTable",
+    hashTable: "graph",
+    graph: "trie",
+    trie: "sorting",
+    sorting: "recursion",
+    recursion: "dp"
+};
+
+// ------------------------------
 // Reward Logic
 // ------------------------------
 
 function awardBoltz(moduleName) {
-
     const reward = moduleRewards[moduleName] || 0;
-
     userState.boltz += reward;
-
     console.log("Awarded " + reward + " Boltz for " + moduleName);
+}
+
+// ------------------------------
+// Unlock Logic
+// ------------------------------
+
+function unlockNextModule(moduleName) {
+    const nextModule = unlockMap[moduleName];
+    if (!nextModule) return;
+
+    if (!userState.unlockedTopics[nextModule]) {
+        userState.unlockedTopics[nextModule] = true;
+        console.log(nextModule + " unlocked!");
+    }
+}
+
+// ------------------------------
+// Streak Logic
+// ------------------------------
+
+function updateStreak() {
+
+    const today = new Date().toISOString().split("T")[0];
+    const lastActive = userState.streak.lastActiveDate;
+
+    if (!lastActive) {
+        userState.streak.current = 1;
+    } else {
+
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        const yesterdayString = yesterday.toISOString().split("T")[0];
+
+        if (lastActive === today) {
+            // Already counted today
+            return;
+        }
+
+        if (lastActive === yesterdayString) {
+            userState.streak.current += 1;
+        } else {
+            userState.streak.current = 1;
+        }
+    }
+
+    if (userState.streak.current > userState.streak.longest) {
+        userState.streak.longest = userState.streak.current;
+    }
+
+    userState.streak.lastActiveDate = today;
+
+    console.log("Current Streak: " + userState.streak.current);
 }
 
 // ------------------------------
@@ -100,19 +167,19 @@ function awardBoltz(moduleName) {
 
 function completeModule(moduleName) {
 
-    // Prevent duplicate completion
     if (userState.progress[moduleName]) {
         console.log(moduleName + " already completed.");
         return;
     }
 
-    // Mark as completed
     userState.progress[moduleName] = true;
 
-    // Award Boltz
     awardBoltz(moduleName);
 
-    // Save updated state
+    unlockNextModule(moduleName);
+
+    updateStreak();   // 🔥 Added here
+
     saveUserState(userState);
 
     console.log(moduleName + " marked as completed.");
