@@ -83,21 +83,29 @@
             <h1>Welcome, Learner 👋</h1>
         </header>
 
+        <!-- ===== DASHBOARD STATS ===== -->
         <section class="dashboard">
+
             <div class="card">
-                <h3>🔥 Streak</h3>
-                <p>3 Days</p>
+                <h3>🔥 Current Streak</h3>
+                <p id="streak-value">0</p>
+            </div>
+
+            <div class="card">
+                <h3>🏆 Longest Streak</h3>
+                <p id="longest-streak-value">0</p>
             </div>
 
             <div class="card">
                 <h3>⚡ Boltz</h3>
-                <p>120</p>
+                <p id="boltz-value">0</p>
             </div>
 
             <div class="card">
                 <h3>📘 Topics Completed</h3>
-                <p>2 / 10</p>
+                <p id="topics-completed">0</p>
             </div>
+
         </section>
 
         <section class="progress">
@@ -109,6 +117,10 @@
 
 </div>
 
+<!-- IMPORTANT: Order matters -->
+<script src="js/userState.js"></script>
+<script src="js/dashboard.js"></script>
 <script src="js/home.js"></script>
+
 </body>
 </html>
