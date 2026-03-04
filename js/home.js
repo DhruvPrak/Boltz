@@ -9,12 +9,12 @@ document.getElementById("nav-dashboard")?.addEventListener("click", () => {
 
 // Arrays
 document.getElementById("nav-arrays")?.addEventListener("click", () => {
-  window.location.href = "/pages/array.html";
+  window.location.href = "pages/array.html";
 });
 
 // Stack
 document.getElementById("nav-stack")?.addEventListener("click", () => {
-  window.location.href = "/pages/stack.html";
+  window.location.href = "pages/stack.html";
 });
 
 // Trees (coming soon)
