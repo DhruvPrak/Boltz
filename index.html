@@ -5,12 +5,14 @@
     <title>DSA Learning Dashboard</title>
     <link rel="stylesheet" href="css/home.css">
 </head>
+
 <body>
 
 <div class="app">
-    
+
     <!-- ========== SIDEBAR ========== -->
     <aside class="sidebar">
+
         <h2 class="logo">DSA⚡</h2>
 
         <nav>
@@ -20,54 +22,77 @@
                     Dashboard
                 </li>
 
-                <li class="menu-item" id="nav-arrays">
+                <li class="menu-item" data-topic="arrays" id="nav-arrays">
                     Arrays
                 </li>
 
-                <li class="menu-item" id="nav-stack">
+                <li class="menu-item" data-topic="stack" id="nav-stack">
                     Stack
                 </li>
 
                 <!-- ===== QUEUE ===== -->
                 <li class="menu-item has-children">
+
                     <div class="menu-header">
                         <span>Queue</span>
                         <span class="arrow">▾</span>
                     </div>
+
                     <ul class="submenu">
-                        <li class="submenu-item" data-link="pages/queue.html">
+
+                        <li class="submenu-item"
+                            data-topic="queue"
+                            data-link="pages/queue.html">
                             Simple Queue
                         </li>
-                        <li class="submenu-item" data-link="pages/circular-queue.html">
+
+                        <li class="submenu-item"
+                            data-topic="queue"
+                            data-link="pages/circular-queue.html">
                             Circular Queue
                         </li>
+
                     </ul>
+
                 </li>
 
                 <!-- ===== LINKED LIST ===== -->
                 <li class="menu-item has-children">
+
                     <div class="menu-header">
                         <span>Linked List</span>
                         <span class="arrow">▾</span>
                     </div>
+
                     <ul class="submenu">
-                        <li class="submenu-item" data-link="pages/singly-linked-list.html">
+
+                        <li class="submenu-item"
+                            data-topic="linkedList"
+                            data-link="pages/singly-linked-list.html">
                             Singly Linked List
                         </li>
-                        <li class="submenu-item" data-link="pages/doubly-linked-list.html">
+
+                        <li class="submenu-item"
+                            data-topic="linkedList"
+                            data-link="pages/doubly-linked-list.html">
                             Doubly Linked List
                         </li>
-                        <li class="submenu-item" data-link="pages/circular-linked-list.html">
+
+                        <li class="submenu-item"
+                            data-topic="linkedList"
+                            data-link="pages/circular-linked-list.html">
                             Circular Linked List
                         </li>
+
                     </ul>
+
                 </li>
 
-                <li class="menu-item" id="nav-trees">
+                <li class="menu-item" data-topic="trees" id="nav-trees">
                     Trees
                 </li>
 
-                <li class="menu-item" id="nav-graphs">
+                <li class="menu-item" data-topic="graph" id="nav-graphs">
                     Graphs
                 </li>
 
@@ -108,6 +133,7 @@
 
         </section>
 
+        <!-- ===== PROGRESS SECTION ===== -->
         <section class="progress">
             <h2>Your Learning Progress</h2>
             <p>Keep learning daily to maintain your streak!</p>
@@ -117,7 +143,9 @@
 
 </div>
 
-<!-- IMPORTANT: Order matters -->
+
+<!-- ================= SCRIPTS ================= -->
+
 <script src="js/userState.js"></script>
 <script src="js/dashboard.js"></script>
 <script src="js/home.js"></script>
