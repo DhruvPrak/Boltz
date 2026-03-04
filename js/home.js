@@ -1,10 +1,10 @@
 /* ===============================
-   MAIN SIDEBAR NAVIGATION (TOP LEVEL)
+   MAIN SIDEBAR NAVIGATION
 ================================ */
 
 // Dashboard
 document.getElementById("nav-dashboard")?.addEventListener("click", () => {
-  window.location.href = "/index.html";
+  window.location.href = "index.html";
 });
 
 // Arrays
@@ -29,7 +29,7 @@ document.getElementById("nav-graphs")?.addEventListener("click", () => {
 
 
 /* ===============================
-   ACCORDION TOGGLE (QUEUE, LINKED LIST)
+   ACCORDION TOGGLE
 ================================ */
 
 document.querySelectorAll(".menu-header").forEach(header => {
@@ -47,29 +47,17 @@ document.querySelectorAll(".menu-header").forEach(header => {
 
 
 /* ===============================
-   SUBMENU PAGE NAVIGATION
+   SUBMENU NAVIGATION
 ================================ */
 
 document.querySelectorAll(".submenu-item").forEach(item => {
   item.addEventListener("click", (e) => {
-    e.stopPropagation(); // prevent accordion toggle
-
-    const link = item.getAttribute("data-link");
-    if (link) {
-      window.location.href = "/" + link;
-    }
-  });
-});
-
-
-/* ===============================
-   LINKED LIST SUBITEM PLACEHOLDERS
-================================ */
-
-document.querySelectorAll(".submenu-group .submenu-item").forEach(item => {
-  item.addEventListener("click", (e) => {
     e.stopPropagation();
 
-    alert("This Linked List operation page will be added soon 🚧");
+    const link = item.getAttribute("data-link");
+
+    if (link) {
+      window.location.href = link;
+    }
   });
 });
