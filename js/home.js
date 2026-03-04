@@ -1,28 +1,35 @@
 /* ===============================
+   BASE PATH FOR GITHUB PAGES
+================================ */
+
+const BASE = "/Boltz/";
+
+
+/* ===============================
    MAIN SIDEBAR NAVIGATION
 ================================ */
 
 // Dashboard
 document.getElementById("nav-dashboard")?.addEventListener("click", () => {
-  window.location.href = "index.html";
+  window.location.href = BASE + "index.html";
 });
 
 // Arrays
 document.getElementById("nav-arrays")?.addEventListener("click", () => {
-  window.location.href = "pages/array.html";
+  window.location.href = BASE + "pages/array.html";
 });
 
 // Stack
 document.getElementById("nav-stack")?.addEventListener("click", () => {
-  window.location.href = "pages/stack.html";
+  window.location.href = BASE + "pages/stack.html";
 });
 
-// Trees (coming soon)
+// Trees
 document.getElementById("nav-trees")?.addEventListener("click", () => {
   alert("Trees page coming soon 🚧");
 });
 
-// Graphs (coming soon)
+// Graphs
 document.getElementById("nav-graphs")?.addEventListener("click", () => {
   alert("Graphs page coming soon 🚧");
 });
@@ -34,6 +41,7 @@ document.getElementById("nav-graphs")?.addEventListener("click", () => {
 
 document.querySelectorAll(".menu-header").forEach(header => {
   header.addEventListener("click", () => {
+
     const parent = header.parentElement;
     parent.classList.toggle("open");
 
@@ -42,6 +50,7 @@ document.querySelectorAll(".menu-header").forEach(header => {
 
     submenu.style.display =
       submenu.style.display === "block" ? "none" : "block";
+
   });
 });
 
@@ -51,13 +60,17 @@ document.querySelectorAll(".menu-header").forEach(header => {
 ================================ */
 
 document.querySelectorAll(".submenu-item").forEach(item => {
+
   item.addEventListener("click", (e) => {
+
     e.stopPropagation();
 
     const link = item.getAttribute("data-link");
 
     if (link) {
-      window.location.href = link;
+      window.location.href = BASE + link;
     }
+
   });
+
 });
