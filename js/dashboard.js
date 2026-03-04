@@ -35,4 +35,32 @@ function updateSidebarLocks() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", updateDashboardUI);
+function updateCompletionBadges() {
+
+    const items = document.querySelectorAll("[data-topic]");
+
+    items.forEach(item => {
+
+        const topic = item.getAttribute("data-topic");
+
+        const badge = item.querySelector(".badge");
+
+        if (!badge) return;
+
+        if (userState.progress[topic]) {
+            badge.textContent = "✔";
+        } else {
+            badge.textContent = "";
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    updateDashboardUI();
+
+    updateSidebarLocks();
+
+    updateCompletionBadges();
+
+});
