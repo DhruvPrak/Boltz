@@ -77,7 +77,15 @@ function updateProgressBar() {
 
     const label = document.getElementById("progress-percentage");
 
-    bar.style.width = percentage + "%";
+    if (!bar || !label) return;
+
+    // Start at 0
+    bar.style.width = "0%";
+
+    // Animate after slight delay
+    setTimeout(() => {
+        bar.style.width = percentage + "%";
+    }, 50);
 
     label.textContent = percentage + "% completed";
 
