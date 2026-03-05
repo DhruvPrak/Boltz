@@ -184,3 +184,15 @@ function completeModule(moduleName) {
 
     console.log(moduleName + " marked as completed.");
 }
+
+function resetState() {
+
+    localStorage.removeItem("dsaUserState");
+
+    userState = structuredClone(defaultUserState);
+
+    console.log("User state reset.");
+
+    location.reload();
+
+}
