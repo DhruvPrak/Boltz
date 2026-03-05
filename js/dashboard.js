@@ -64,3 +64,21 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCompletionBadges();
 
 });
+
+function updateProgressBar() {
+
+    const completed = Object.values(userState.progress).filter(Boolean).length;
+
+    const total = Object.keys(userState.progress).length;
+
+    const percentage = Math.round((completed / total) * 100);
+
+    const bar = document.getElementById("overall-progress-bar");
+
+    const label = document.getElementById("progress-percentage");
+
+    bar.style.width = percentage + "%";
+
+    label.textContent = percentage + "% completed";
+
+}
