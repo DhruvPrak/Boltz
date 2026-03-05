@@ -31,7 +31,7 @@ const defaultUserState = {
     },
 
     unlockedTopics: {
-        arrays: false, 
+        arrays: true, 
         stack: false,
         queue: false,
         linkedList: false,
