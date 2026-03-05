@@ -1,76 +1,65 @@
 /* ===============================
-   BASE PATH FOR GITHUB PAGES
+MAIN SIDEBAR NAVIGATION
 ================================ */
 
-const BASE = "/Boltz/";
-
-
-/* ===============================
-   MAIN SIDEBAR NAVIGATION
-================================ */
-
-// Dashboard
 document.getElementById("nav-dashboard")?.addEventListener("click", () => {
-  window.location.href = BASE + "index.html";
+window.location.href = "index.html";
 });
 
-// Arrays
 document.getElementById("nav-arrays")?.addEventListener("click", () => {
-  window.location.href = BASE + "pages/array.html";
+window.location.href = "pages/array.html";
 });
 
-// Stack
 document.getElementById("nav-stack")?.addEventListener("click", () => {
-  window.location.href = BASE + "pages/stack.html";
+window.location.href = "pages/stack.html";
 });
 
-// Trees
 document.getElementById("nav-trees")?.addEventListener("click", () => {
-  alert("Trees page coming soon 🚧");
+alert("Trees page coming soon 🚧");
 });
 
-// Graphs
 document.getElementById("nav-graphs")?.addEventListener("click", () => {
-  alert("Graphs page coming soon 🚧");
+alert("Graphs page coming soon 🚧");
 });
-
 
 /* ===============================
-   ACCORDION TOGGLE
+ACCORDION TOGGLE
 ================================ */
 
 document.querySelectorAll(".menu-header").forEach(header => {
-  header.addEventListener("click", () => {
 
-    const parent = header.parentElement;
-    parent.classList.toggle("open");
+header.addEventListener("click", () => {
 
-    const submenu = parent.querySelector(".submenu");
-    if (!submenu) return;
+const parent = header.parentElement;
+parent.classList.toggle("open");
 
-    submenu.style.display =
-      submenu.style.display === "block" ? "none" : "block";
+const submenu = parent.querySelector(".submenu");
 
-  });
+if (!submenu) return;
+
+submenu.style.display =
+submenu.style.display === "block" ? "none" : "block";
+
 });
 
+});
 
 /* ===============================
-   SUBMENU NAVIGATION
+SUBMENU PAGE NAVIGATION
 ================================ */
 
 document.querySelectorAll(".submenu-item").forEach(item => {
 
-  item.addEventListener("click", (e) => {
+item.addEventListener("click", (e) => {
 
-    e.stopPropagation();
+e.stopPropagation();
 
-    const link = item.getAttribute("data-link");
+const link = item.getAttribute("data-link");
 
-    if (link) {
-      window.location.href = BASE + link;
-    }
+if (link) {
+window.location.href = link;
+}
 
-  });
+});
 
 });
