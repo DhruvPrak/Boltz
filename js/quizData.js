@@ -41,12 +41,7 @@ const quizData = {
 
         {
             question: "Which operation removes the top element of a stack?",
-            options: [
-                "Push",
-                "Pop",
-                "Peek",
-                "Insert"
-            ],
+            options: ["Push","Pop","Peek","Insert"],
             answer: 1
         }
 
