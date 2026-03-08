@@ -183,10 +183,90 @@ function showTopicCelebration(topicName) {
 
     box.classList.remove("hidden");
 
+    triggerConfetti();
+
     setTimeout(() => {
 
         box.classList.add("hidden");
 
     }, 4000);
+
+}
+
+function triggerConfetti() {
+
+    const canvas = document.getElementById("confetti-canvas");
+
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const confetti = [];
+
+    for (let i = 0; i < 120; i++) {
+
+        confetti.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 6 + 2,
+            d: Math.random() * 120,
+            color: "hsl(" + Math.random() * 360 + ", 100%, 50%)",
+            tilt: Math.floor(Math.random() * 10) - 10
+        });
+
+    }
+
+    function draw() {
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        confetti.forEach(c => {
+
+            ctx.beginPath();
+            ctx.fillStyle = c.color;
+
+            ctx.fillRect(c.x, c.y, c.r, c.r);
+
+        });
+
+        update();
+
+    }
+
+    function update() {
+
+        confetti.forEach(c => {
+
+            c.y += Math.cos(c.d) + 2;
+            c.x += Math.sin(c.d);
+
+            if (c.y > canvas.height) {
+                c.y = -10;
+            }
+
+        });
+
+    }
+
+    let animation;
+
+    function animate() {
+
+        draw();
+        animation = requestAnimationFrame(animate);
+
+    }
+
+    animate();
+
+    setTimeout(() => {
+
+        cancelAnimationFrame(animation);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    }, 3000);
 
 }

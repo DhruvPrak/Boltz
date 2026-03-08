@@ -81,10 +81,6 @@ const moduleRewards = {
     dp: 200
 };
 
-// ------------------------------
-// Unlock Configuration
-// ------------------------------
-
 const unlockMap = {
     arrays: "stack",
     stack: "queue",
@@ -98,21 +94,11 @@ const unlockMap = {
     sorting: "recursion",
     recursion: "dp"
 };
-
-// ------------------------------
-// Reward Logic
-// ------------------------------
-
 function awardBoltz(moduleName) {
     const reward = moduleRewards[moduleName] || 0;
     userState.boltz += reward;
     console.log("Awarded " + reward + " Boltz for " + moduleName);
 }
-
-// ------------------------------
-// Unlock Logic
-// ------------------------------
-
 function unlockNextModule(moduleName) {
     const nextModule = unlockMap[moduleName];
     if (!nextModule) return;
@@ -122,11 +108,6 @@ function unlockNextModule(moduleName) {
         console.log(nextModule + " unlocked!");
     }
 }
-
-// ------------------------------
-// Streak Logic
-// ------------------------------
-
 function updateStreak() {
 
     const today = new Date().toISOString().split("T")[0];
@@ -141,7 +122,6 @@ function updateStreak() {
         const yesterdayString = yesterday.toISOString().split("T")[0];
 
         if (lastActive === today) {
-            // Already counted today
             return;
         }
 
@@ -160,10 +140,6 @@ function updateStreak() {
 
     console.log("Current Streak: " + userState.streak.current);
 }
-
-// ------------------------------
-// Progress Tracking Logic
-// ------------------------------
 
 function completeModule(moduleName) {
 
@@ -185,7 +161,7 @@ function completeModule(moduleName) {
     showRewardPopup(moduleName);
 
     showTopicCelebration(moduleName);
-    
+
     console.log(moduleName + " marked as completed.");
 }
 
