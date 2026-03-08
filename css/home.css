@@ -95,3 +95,28 @@ body {
     margin-top: 8px;
     font-size: 14px;
 }
+
+/* Streak Indicator */
+
+.streak-indicator {
+
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #020617;
+    border-radius: 8px;
+    text-align: center;
+
+}
+
+.streak-indicator h2 {
+
+    color: #f97316;
+    margin-bottom: 10px;
+
+}
+
+.streak-indicator p {
+
+    color: #94a3b8;
+
+}

@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateCompletionBadges();
 
+    updateStreakIndicator();
 });
 
 function updateProgressBar() {
@@ -88,5 +89,36 @@ function updateProgressBar() {
     }, 50);
 
     label.textContent = percentage + "% completed";
+
+}
+
+function updateStreakIndicator() {
+
+    const streak = userState.streak.current;
+
+    const title = document.getElementById("streak-title");
+    const message = document.getElementById("streak-message");
+
+    if (!title || !message) return;
+
+    title.textContent = "🔥 " + streak + " Day Streak";
+
+    if (streak === 0) {
+
+        message.textContent = "Start learning today to build your streak!";
+
+    } else if (streak === 1) {
+
+        message.textContent = "Great start! Come back tomorrow to continue.";
+
+    } else if (streak < 5) {
+
+        message.textContent = "Nice consistency! Keep going.";
+
+    } else {
+
+        message.textContent = "Amazing discipline! You're on fire.";
+
+    }
 
 }
