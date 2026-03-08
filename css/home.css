@@ -120,3 +120,41 @@ body {
     color: #94a3b8;
 
 }
+
+/* Reward Popup */
+
+.reward-popup {
+
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    background-color: #020617;
+    border: 2px solid #38bdf8;
+
+    padding: 15px 25px;
+    border-radius: 10px;
+
+    box-shadow: 0 0 15px rgba(56,189,248,0.4);
+
+    animation: popupSlide 0.4s ease;
+
+}
+
+.reward-popup.hidden {
+    display: none;
+}
+
+@keyframes popupSlide {
+
+    from {
+        transform: translateX(200px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+}

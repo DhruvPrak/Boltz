@@ -148,3 +148,26 @@ function updateDailyReminder() {
     }
 
 }
+
+function showRewardPopup(moduleName) {
+
+    const reward = moduleRewards[moduleName] || 0;
+
+    const popup = document.getElementById("reward-popup");
+    const title = document.getElementById("reward-title");
+    const boltz = document.getElementById("reward-boltz");
+
+    if (!popup || !title || !boltz) return;
+
+    title.textContent = moduleName + " Module Completed!";
+    boltz.textContent = "+" + reward + " Boltz ⚡";
+
+    popup.classList.remove("hidden");
+
+    setTimeout(() => {
+
+        popup.classList.add("hidden");
+
+    }, 3000);
+
+}

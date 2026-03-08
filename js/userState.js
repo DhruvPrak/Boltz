@@ -178,9 +178,11 @@ function completeModule(moduleName) {
 
     unlockNextModule(moduleName);
 
-    updateStreak();   // 🔥 Added here
+    updateStreak();
 
     saveUserState(userState);
+
+    showRewardPopup(moduleName);
 
     console.log(moduleName + " marked as completed.");
 }
