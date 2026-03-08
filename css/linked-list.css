@@ -26,3 +26,26 @@ body {
   margin: 0 5px;
   font-weight: bold;
 }
+
+.daily-reminder {
+
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #1e293b;
+    border-radius: 8px;
+
+}
+
+.daily-reminder h3 {
+
+    margin: 0;
+    font-size: 18px;
+
+}
+
+.daily-reminder p {
+
+    margin-top: 5px;
+    color: #94a3b8;
+
+}

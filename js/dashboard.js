@@ -64,6 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCompletionBadges();
 
     updateStreakIndicator();
+
+    updateDailyReminder();
 });
 
 function updateProgressBar() {
@@ -118,6 +120,30 @@ function updateStreakIndicator() {
     } else {
 
         message.textContent = "Amazing discipline! You're on fire.";
+
+    }
+
+}
+
+function updateDailyReminder() {
+
+    const title = document.getElementById("reminder-title");
+    const message = document.getElementById("reminder-message");
+
+    if (!title || !message) return;
+
+    const today = new Date().toISOString().split("T")[0];
+    const lastActive = userState.streak.lastActiveDate;
+
+    if (lastActive === today) {
+
+        title.textContent = "✅ You're active today!";
+        message.textContent = "Great work! Keep learning.";
+
+    } else {
+
+        title.textContent = "⚠️ You haven't learned today";
+        message.textContent = "Complete a module to keep your streak alive.";
 
     }
 
