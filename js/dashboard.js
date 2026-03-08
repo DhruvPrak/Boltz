@@ -171,3 +171,22 @@ function showRewardPopup(moduleName) {
     }, 3000);
 
 }
+
+function showTopicCelebration(topicName) {
+
+    const box = document.getElementById("topic-celebration");
+    const text = document.getElementById("celebration-text");
+
+    if (!box || !text) return;
+
+    text.textContent = "You completed the " + topicName + " topic!";
+
+    box.classList.remove("hidden");
+
+    setTimeout(() => {
+
+        box.classList.add("hidden");
+
+    }, 4000);
+
+}

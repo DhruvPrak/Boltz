@@ -184,6 +184,8 @@ function completeModule(moduleName) {
 
     showRewardPopup(moduleName);
 
+    showTopicCelebration(moduleName);
+    
     console.log(moduleName + " marked as completed.");
 }
 
