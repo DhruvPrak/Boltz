@@ -1,43 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Arrays</title>
+<meta charset="UTF-8">
+<title>Arrays - DSA Learning</title>
+
+<link rel="stylesheet" href="../css/home.css">
+
 </head>
+
 <body>
 
-  <h1>Arrays</h1>
+<div class="main">
 
-  <p id="arrayOutput">
-    Array values will appear here
-  </p>
+<h1>Arrays</h1>
 
-  <button id="showBtn">
-    Show Array
-  </button>
-  <input type="number" id="valueInput" placeholder="Enter value" />
+<p>
+Arrays store elements in contiguous memory locations and allow fast index access.
+</p>
 
-<button id="pushBtn">
-  Push
-</button>
-<button id="popBtn">
-  Pop
-</button>
+<!-- ===================== -->
+<!-- QUIZ SECTION -->
+<!-- ===================== -->
 
+<section class="quiz-section">
 
-  <div id="arrayContainer"></div>
+<h2>Arrays Quiz</h2>
 
-  <section class="quiz-section">
-
-<h2>Quiz</h2>
+<p id="quiz-score">Score: 0</p>
 
 <div id="quiz-container"></div>
+
+<p id="quiz-feedback"></p>
 
 <button id="next-question-btn">Next Question</button>
 
 </section>
-  <script src="../js/userState.js"></script>
-  <script src="../js/array.js"></script>
-  <script src="../js/quizData.js"></script>
-  <script src="../js/quizEngine.js"></script>
+
+</div>
+
+
+<!-- ===================== -->
+<!-- SCRIPTS -->
+<!-- ===================== -->
+
+<script src="../js/quizData.js"></script>
+<script src="../js/quizEngine.js"></script>
+
 </body>
+
 </html>

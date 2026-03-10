@@ -39,3 +39,24 @@
     background-color: #334155;
 
 }
+
+/* Quiz Feedback */
+
+#quiz-feedback{
+
+margin-top:10px;
+font-weight:bold;
+
+}
+
+.correct{
+
+color:#22c55e;
+
+}
+
+.wrong{
+
+color:#ef4444;
+
+}
