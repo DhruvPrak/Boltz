@@ -1,6 +1,3 @@
-/* ===============================
-SIDEBAR NAVIGATION SYSTEM
-================================ */
 
 document.querySelectorAll("[data-link]").forEach(item => {
 
@@ -18,11 +15,6 @@ document.querySelectorAll("[data-link]").forEach(item => {
 
 });
 
-
-/* ===============================
-DASHBOARD NAVIGATION
-================================ */
-
 const dashboard = document.getElementById("nav-dashboard");
 
 if (dashboard) {
@@ -32,11 +24,6 @@ if (dashboard) {
     });
 
 }
-
-
-/* ===============================
-ACCORDION TOGGLE (QUEUE, LINKED LIST)
-================================ */
 
 document.querySelectorAll(".menu-header").forEach(header => {
 
